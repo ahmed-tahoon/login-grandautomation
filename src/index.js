@@ -1,4 +1,3 @@
-export const Capitalize = ({ str }) => {
-    return <h1>{str.charAt(0).toUpperCase() + str.slice(1)}</h1>;
-  };
-  
+// login and register
+export { default as LoginPage } from './Pages/Login/LoginPage';
+export { default as Register } from './Pages/Register/Register';
