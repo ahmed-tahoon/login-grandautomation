@@ -58,11 +58,6 @@ function LoginPage() {
       return onSubmit;
     }()
   });
-  (0, _react.useEffect)(function () {
-    if (authData) {
-      navigate("/");
-    }
-  }, [authData]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "animate__fadeIn animate__animated animate__faster text-white h-full flex flex-col justify-center items-center md:px-0 px-5 bg-[#121212]"
   }, /*#__PURE__*/_react["default"].createElement("form", {

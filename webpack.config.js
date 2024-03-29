@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   // Other webpack configuration options
   module: {
@@ -11,6 +13,10 @@ module.exports = {
             presets: ['@babel/preset-react'],
           },
         },
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
       },
       // Other loaders as needed
     ],
