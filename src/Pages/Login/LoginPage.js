@@ -5,7 +5,6 @@ import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { userIsLoginContext } from "../../Context/UserIsLoginProvider";
 import ButtonLoader from "../../Components/Common/ButtonLoader";
-import { toast, Toaster, ToastBar } from "react-hot-toast";
 function LoginPage() {
   useEffect(() => {
     document.title = "Grand Automation | Login";
@@ -40,7 +39,6 @@ function LoginPage() {
 
         if (response.success) {
           localStorage.setItem("auth", JSON.stringify(response.data));
-          toast.success("Welcome back! We've missed you.");
           setToken(response.data.token);
           // get user data
 
@@ -48,9 +46,7 @@ function LoginPage() {
           navigate("/");
           resetForm();
         } else {
-          toast.error(
-            "Either your email or password may be incorrect. Please verify your details and attempt to log in again."
-          );
+        
           setLoading(false);
         }
 
