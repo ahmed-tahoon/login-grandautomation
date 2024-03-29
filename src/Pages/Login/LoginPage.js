@@ -31,21 +31,12 @@ function LoginPage({ submit }) {
       // redirect to the dashboard
       // if failed
       // show error message
-      submit(data);
       const data = {
         email: values.email,
         password: values.password,
       };
 
-      try {
-        axios.post("http://localhost:5000/api/login", data).then((res) => {
-          console.log(res.data);
-          localStorage.setItem("token", res.data.token);
-          navigate("/dashboard");
-        });
-      } catch (error) {
-        console.log(error);
-      }
+      submit(data);
     },
   });
 

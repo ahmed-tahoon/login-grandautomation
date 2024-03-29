@@ -24,7 +24,8 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-function LoginPage() {
+function LoginPage(_ref) {
+  var submit = _ref.submit;
   (0, _react.useEffect)(function () {
     document.title = "Grand Automation | Login";
   }, []);
@@ -43,18 +44,19 @@ function LoginPage() {
       password: Yup.string().required("Please Enter Your password")
     }),
     onSubmit: function () {
-      var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(values, _ref) {
+      var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(values, _ref2) {
         var resetForm, setSubmitting, data;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              resetForm = _ref.resetForm, setSubmitting = _ref.setSubmitting;
+              resetForm = _ref2.resetForm, setSubmitting = _ref2.setSubmitting;
               // send request to the server
               // if successfull
               // store the token in local storage
               // redirect to the dashboard
               // if failed
               // show error message
+              submit(data);
               data = {
                 email: values.email,
                 password: values.password
@@ -68,7 +70,7 @@ function LoginPage() {
               } catch (error) {
                 console.log(error);
               }
-            case 3:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -149,6 +151,29 @@ function LoginPage() {
   }, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Link, {
     to: "/forget-password",
     className: "font-semibold underline"
-  }, "Forgot password?")))));
+  }, "Forgot password?")))), /*#__PURE__*/_react["default"].createElement("div", {
+    "class": "max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  }, /*#__PURE__*/_react["default"].createElement("a", {
+    href: "#"
+  }, /*#__PURE__*/_react["default"].createElement("h5", {
+    "class": "mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+  }, "Noteworthy technology acquisitions 2021")), /*#__PURE__*/_react["default"].createElement("p", {
+    "class": "mb-3 font-normal text-gray-700 dark:text-gray-400"
+  }, "Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order."), /*#__PURE__*/_react["default"].createElement("a", {
+    href: "#",
+    "class": "inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  }, "Read more", /*#__PURE__*/_react["default"].createElement("svg", {
+    "class": "rtl:rotate-180 w-3.5 h-3.5 ms-2",
+    "aria-hidden": "true",
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 14 10"
+  }, /*#__PURE__*/_react["default"].createElement("path", {
+    stroke: "currentColor",
+    "stroke-linecap": "round",
+    "stroke-linejoin": "round",
+    "stroke-width": "2",
+    d: "M1 5h12m0 0L9 1m4 4L9 9"
+  })))));
 }
 var _default = exports["default"] = LoginPage;
