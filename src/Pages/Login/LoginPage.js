@@ -26,38 +26,7 @@ function LoginPage() {
       password: Yup.string().required("Please Enter Your password"),
     }),
     onSubmit: async (values, { resetForm, setSubmitting }) => {
-      try {
-        setLoading(true);
-        // convert email and password to string
-        const sendData = {
-          email: values.email.toString(), // Use toString() instead of ToString()
-          password: values.password,
-        };
-
-        // Call the register method from the authService
-        const response = await authService.login(sendData);
-
-        if (response.success) {
-          localStorage.setItem("auth", JSON.stringify(response.data));
-          setToken(response.data.token);
-          // get user data
-
-          setLoading(false);
-          navigate("/");
-          resetForm();
-        } else {
-        
-          setLoading(false);
-        }
-
-        // Reset the form after successful submission
-      } catch (error) {
-        setLoading(false);
-        console.error("Error:", error);
-      } finally {
-        // Set submitting state to false after submission
-        setSubmitting(false);
-      }
+      
     },
   });
 

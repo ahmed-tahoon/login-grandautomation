@@ -12,7 +12,6 @@ var _md = require("react-icons/md");
 var _reactRouterDom = require("react-router-dom");
 var _UserIsLoginProvider = require("../../Context/UserIsLoginProvider");
 var _ButtonLoader = _interopRequireDefault(require("../../Components/Common/ButtonLoader"));
-var _reactHotToast = require("react-hot-toast");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
@@ -68,7 +67,6 @@ function LoginPage() {
               response = _context.sent;
               if (response.success) {
                 localStorage.setItem("auth", JSON.stringify(response.data));
-                _reactHotToast.toast.success("Welcome back! We've missed you.");
                 setToken(response.data.token);
                 // get user data
 
@@ -76,7 +74,6 @@ function LoginPage() {
                 navigate("/");
                 resetForm();
               } else {
-                _reactHotToast.toast.error("Either your email or password may be incorrect. Please verify your details and attempt to log in again.");
                 setLoading(false);
               }
 
