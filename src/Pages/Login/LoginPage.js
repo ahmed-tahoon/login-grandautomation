@@ -41,8 +41,8 @@ function LoginPage({ submit }) {
   });
 
   return (
-    <div className="animate__fadeIn animate__animated animate__faster text-white h-full flex flex-col justify-center items-center md:px-0 px-5 bg-[#121212]">
-      */}
+    <div className="">
+     
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img

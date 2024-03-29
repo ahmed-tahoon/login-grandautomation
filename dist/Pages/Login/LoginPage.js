@@ -220,6 +220,45 @@ function LoginPage(_ref) {
     "stroke-linejoin": "round",
     "stroke-width": "2",
     d: "M1 5h12m0 0L9 1m4 4L9 9"
-  })))));
+  })))), /*#__PURE__*/_react["default"].createElement("form", {
+    "class": "max-w-sm mx-auto"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    "class": "mb-5"
+  }, /*#__PURE__*/_react["default"].createElement("label", {
+    "for": "email",
+    "class": "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  }, "Your email"), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "email",
+    id: "email",
+    "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    placeholder: "name@flowbite.com",
+    required: true
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    "class": "mb-5"
+  }, /*#__PURE__*/_react["default"].createElement("label", {
+    "for": "password",
+    "class": "block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+  }, "Your password"), /*#__PURE__*/_react["default"].createElement("input", {
+    type: "password",
+    id: "password",
+    "class": "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
+    required: true
+  })), /*#__PURE__*/_react["default"].createElement("div", {
+    "class": "flex items-start mb-5"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    "class": "flex items-center h-5"
+  }, /*#__PURE__*/_react["default"].createElement("input", {
+    id: "remember",
+    type: "checkbox",
+    value: "",
+    "class": "w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800",
+    required: true
+  })), /*#__PURE__*/_react["default"].createElement("label", {
+    "for": "remember",
+    "class": "ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+  }, "Remember me")), /*#__PURE__*/_react["default"].createElement("button", {
+    type: "submit",
+    "class": "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+  }, "Submit")));
 }
 var _default = exports["default"] = LoginPage;
