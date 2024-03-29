@@ -48,53 +48,16 @@ function LoginPage() {
     }),
     onSubmit: function () {
       var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(values, _ref) {
-        var resetForm, setSubmitting, sendData, response;
+        var resetForm, setSubmitting;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               resetForm = _ref.resetForm, setSubmitting = _ref.setSubmitting;
-              _context.prev = 1;
-              setLoading(true);
-              // convert email and password to string
-              sendData = {
-                email: values.email.toString(),
-                // Use toString() instead of ToString()
-                password: values.password
-              }; // Call the register method from the authService
-              _context.next = 6;
-              return authService.login(sendData);
-            case 6:
-              response = _context.sent;
-              if (response.success) {
-                localStorage.setItem("auth", JSON.stringify(response.data));
-                setToken(response.data.token);
-                // get user data
-
-                setLoading(false);
-                navigate("/");
-                resetForm();
-              } else {
-                setLoading(false);
-              }
-
-              // Reset the form after successful submission
-              _context.next = 14;
-              break;
-            case 10:
-              _context.prev = 10;
-              _context.t0 = _context["catch"](1);
-              setLoading(false);
-              console.error("Error:", _context.t0);
-            case 14:
-              _context.prev = 14;
-              // Set submitting state to false after submission
-              setSubmitting(false);
-              return _context.finish(14);
-            case 17:
+            case 1:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[1, 10, 14, 17]]);
+        }, _callee);
       }));
       function onSubmit(_x, _x2) {
         return _onSubmit.apply(this, arguments);

@@ -3,8 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import { userIsLoginContext } from "../../Context/UserIsLoginProvider";
-import ButtonLoader from "../../Components/Common/ButtonLoader";
+
 function LoginPage() {
   useEffect(() => {
     document.title = "Grand Automation | Login";
@@ -25,9 +24,7 @@ function LoginPage() {
         .required("Please Enter Your Email"),
       password: Yup.string().required("Please Enter Your password"),
     }),
-    onSubmit: async (values, { resetForm, setSubmitting }) => {
-      
-    },
+    onSubmit: async (values, { resetForm, setSubmitting }) => {},
   });
 
   useEffect(() => {
@@ -129,8 +126,6 @@ function LoginPage() {
             </Link>
           </div>
         </div>
-
-        <ButtonLoader loading={loading} text="Login" />
       </form>
     </div>
   );
