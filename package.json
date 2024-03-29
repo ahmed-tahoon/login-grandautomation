@@ -3,6 +3,7 @@
   "version": "1.14.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "dist/index.js",
+  "module" : "dist/index.js",
   "dependencies": {
     "@babel/cli": "^7.24.1",
     "@emotion/react": "^11.11.4",
