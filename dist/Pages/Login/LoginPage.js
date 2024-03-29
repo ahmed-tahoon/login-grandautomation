@@ -56,21 +56,12 @@ function LoginPage(_ref) {
               // redirect to the dashboard
               // if failed
               // show error message
-              submit(data);
               data = {
                 email: values.email,
                 password: values.password
               };
-              try {
-                _axios["default"].post("http://localhost:5000/api/login", data).then(function (res) {
-                  console.log(res.data);
-                  localStorage.setItem("token", res.data.token);
-                  navigate("/dashboard");
-                });
-              } catch (error) {
-                console.log(error);
-              }
-            case 4:
+              submit(data);
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -84,7 +75,62 @@ function LoginPage(_ref) {
   });
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: "animate__fadeIn animate__animated animate__faster text-white h-full flex flex-col justify-center items-center md:px-0 px-5 bg-[#121212]"
+  }, "*/}", /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "sm:mx-auto sm:w-full sm:max-w-sm"
+  }, /*#__PURE__*/_react["default"].createElement("img", {
+    className: "mx-auto h-10 w-auto",
+    src: "https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600",
+    alt: "Your Company"
+  }), /*#__PURE__*/_react["default"].createElement("h2", {
+    className: "mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900"
+  }, "Sign in to your account")), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
   }, /*#__PURE__*/_react["default"].createElement("form", {
+    className: "space-y-6",
+    action: "#",
+    method: "POST"
+  }, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("label", {
+    htmlFor: "email",
+    className: "block text-sm font-medium leading-6 text-gray-900"
+  }, "Email address"), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "mt-2"
+  }, /*#__PURE__*/_react["default"].createElement("input", {
+    id: "email",
+    name: "email",
+    type: "email",
+    autoComplete: "email",
+    required: true,
+    className: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+  }))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex items-center justify-between"
+  }, /*#__PURE__*/_react["default"].createElement("label", {
+    htmlFor: "password",
+    className: "block text-sm font-medium leading-6 text-gray-900"
+  }, "Password"), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "text-sm"
+  }, /*#__PURE__*/_react["default"].createElement("a", {
+    href: "#",
+    className: "font-semibold text-indigo-600 hover:text-indigo-500"
+  }, "Forgot password?"))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "mt-2"
+  }, /*#__PURE__*/_react["default"].createElement("input", {
+    id: "password",
+    name: "password",
+    type: "password",
+    autoComplete: "current-password",
+    required: true,
+    className: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+  }))), /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("button", {
+    type: "submit",
+    className: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+  }, "Sign in"))), /*#__PURE__*/_react["default"].createElement("p", {
+    className: "mt-10 text-center text-sm text-gray-500"
+  }, "Not a member?", " ", /*#__PURE__*/_react["default"].createElement("a", {
+    href: "#",
+    className: "font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
+  }, "Start a 14 day free trial")))), " ", /*#__PURE__*/_react["default"].createElement("form", {
     onSubmit: formik.handleSubmit
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "flex sm:flex-row flex-col-reverse justify-between items-center"
