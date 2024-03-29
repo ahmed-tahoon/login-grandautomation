@@ -11,7 +11,6 @@ var Yup = _interopRequireWildcard(require("yup"));
 var _md = require("react-icons/md");
 var _reactRouterDom = require("react-router-dom");
 var _UserIsLoginProvider = require("../../Context/UserIsLoginProvider");
-var _authService = _interopRequireDefault(require("../../Services/authService"));
 var _ButtonLoader = _interopRequireDefault(require("../../Components/Common/ButtonLoader"));
 var _reactHotToast = require("react-hot-toast");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -64,7 +63,7 @@ function LoginPage() {
                 password: values.password
               }; // Call the register method from the authService
               _context.next = 6;
-              return _authService["default"].login(sendData);
+              return authService.login(sendData);
             case 6:
               response = _context.sent;
               if (response.success) {

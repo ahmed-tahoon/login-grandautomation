@@ -1,5 +1,4 @@
-import axios from "./axiosConfig"; // Adjust the import path as needed
-import toast from "react-hot-toast";
+
 
 const authService = {
   login: async (data) => {

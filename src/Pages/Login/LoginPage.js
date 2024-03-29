@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { userIsLoginContext } from "../../Context/UserIsLoginProvider";
-import authService from "../../Services/authService";
 import ButtonLoader from "../../Components/Common/ButtonLoader";
 import { toast, Toaster, ToastBar } from "react-hot-toast";
 function LoginPage() {
