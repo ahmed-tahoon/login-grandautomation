@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LoginPage() {
   useEffect(() => {
@@ -23,10 +24,30 @@ function LoginPage() {
         .required("Please Enter Your Email"),
       password: Yup.string().required("Please Enter Your password"),
     }),
-    onSubmit: async (values, { resetForm, setSubmitting }) => {},
-  });
+    onSubmit: async (values, { resetForm, setSubmitting }) => {
+      // send request to the server
+      // if successfull
+      // store the token in local storage
+      // redirect to the dashboard
+      // if failed
+      // show error message
 
-  
+      const data = {
+        email: values.email,
+        password: values.password,
+      };
+
+      try {
+        axios.post("http://localhost:5000/api/login", data).then((res) => {
+          console.log(res.data);
+          localStorage.setItem("token", res.data.token);
+          navigate("/dashboard");
+        });
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  });
 
   return (
     <div className="animate__fadeIn animate__animated animate__faster text-white h-full flex flex-col justify-center items-center md:px-0 px-5 bg-[#121212]">
@@ -114,6 +135,13 @@ function LoginPage() {
               {formik.errors.password}
             </div>
           ) : null}
+
+          <button
+            type="submit"
+            className="w-full bg-[#ff0000] text-white py-2 rounded-md mt-4"
+          >
+            Login
+          </button>
 
           <div className="text-sm mt-3">
             <Link to="/forget-password" className="font-semibold underline">
