@@ -14,8 +14,6 @@ var _UserIsLoginProvider = require("../../Context/UserIsLoginProvider");
 var _authService = _interopRequireDefault(require("../../Services/authService"));
 var _ButtonLoader = _interopRequireDefault(require("../../Components/Common/ButtonLoader"));
 var _reactHotToast = require("react-hot-toast");
-var _userService = _interopRequireDefault(require("../../Services/userService"));
-require("../../index.css");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
@@ -43,12 +41,12 @@ function LoginPage() {
   var navigate = (0, _reactRouterDom.useNavigate)();
   var formik = (0, _formik.useFormik)({
     initialValues: {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     },
     validationSchema: Yup.object().shape({
-      email: Yup.string().email('this is an inavlid email').required('Please Enter Your Email'),
-      password: Yup.string().required('Please Enter Your password')
+      email: Yup.string().email("this is an inavlid email").required("Please Enter Your Email"),
+      password: Yup.string().required("Please Enter Your password")
     }),
     onSubmit: function () {
       var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(values, _ref) {
@@ -69,47 +67,38 @@ function LoginPage() {
               return _authService["default"].login(sendData);
             case 6:
               response = _context.sent;
-              if (!response.success) {
-                _context.next = 18;
-                break;
+              if (response.success) {
+                localStorage.setItem("auth", JSON.stringify(response.data));
+                _reactHotToast.toast.success("Welcome back! We've missed you.");
+                setToken(response.data.token);
+                // get user data
+
+                setLoading(false);
+                navigate("/");
+                resetForm();
+              } else {
+                _reactHotToast.toast.error("Either your email or password may be incorrect. Please verify your details and attempt to log in again.");
+                setLoading(false);
               }
-              localStorage.setItem('auth', JSON.stringify(response.data));
-              _reactHotToast.toast.success("Welcome back! We've missed you.");
-              setToken(response.data.token);
-              // get user data
-              _context.next = 13;
-              return _userService["default"].getUserData(response.data.token).then(function (res) {
-                if (res.success) {
-                  setAuthData(res.data);
-                }
-              });
-            case 13:
-              setLoading(false);
-              navigate('/');
-              resetForm();
-              _context.next = 20;
+
+              // Reset the form after successful submission
+              _context.next = 14;
               break;
-            case 18:
-              _reactHotToast.toast.error("Either your email or password may be incorrect. Please verify your details and attempt to log in again.");
-              setLoading(false);
-            case 20:
-              _context.next = 26;
-              break;
-            case 22:
-              _context.prev = 22;
+            case 10:
+              _context.prev = 10;
               _context.t0 = _context["catch"](1);
               setLoading(false);
-              console.error('Error:', _context.t0);
-            case 26:
-              _context.prev = 26;
+              console.error("Error:", _context.t0);
+            case 14:
+              _context.prev = 14;
               // Set submitting state to false after submission
               setSubmitting(false);
-              return _context.finish(26);
-            case 29:
+              return _context.finish(14);
+            case 17:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[1, 22, 26, 29]]);
+        }, _callee, null, [[1, 10, 14, 17]]);
       }));
       function onSubmit(_x, _x2) {
         return _onSubmit.apply(this, arguments);
@@ -119,7 +108,7 @@ function LoginPage() {
   });
   (0, _react.useEffect)(function () {
     if (authData) {
-      navigate('/');
+      navigate("/");
     }
   }, [authData]);
   return /*#__PURE__*/_react["default"].createElement("div", {

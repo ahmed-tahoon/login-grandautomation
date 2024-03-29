@@ -9,5 +9,6 @@ Object.defineProperty(exports, "LoginPage", {
     return _LoginPage["default"];
   }
 });
+require("./index.css");
 var _LoginPage = _interopRequireDefault(require("./Pages/Login/LoginPage"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
