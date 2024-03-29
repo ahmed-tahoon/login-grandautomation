@@ -26,11 +26,7 @@ function LoginPage() {
     onSubmit: async (values, { resetForm, setSubmitting }) => {},
   });
 
-  useEffect(() => {
-    if (authData) {
-      navigate("/");
-    }
-  }, [authData]);
+  
 
   return (
     <div className="animate__fadeIn animate__animated animate__faster text-white h-full flex flex-col justify-center items-center md:px-0 px-5 bg-[#121212]">

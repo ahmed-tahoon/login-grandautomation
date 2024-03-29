@@ -25,10 +25,6 @@ function LoginPage() {
   (0, _react.useEffect)(function () {
     document.title = "Grand Automation | Login";
   }, []);
-  var _useContext = (0, _react.useContext)(userIsLoginContext),
-    authData = _useContext.authData,
-    setAuthData = _useContext.setAuthData,
-    setToken = _useContext.setToken;
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     loading = _useState2[0],
