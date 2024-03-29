@@ -10,7 +10,7 @@ Object.defineProperty(exports, "Capti", {
     return _Capti["default"];
   }
 });
-var _Capti = _interopRequireDefault(require("./Capti"));
+var _Capti = _interopRequireDefault(require("./Capti/Capti"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Capitalize = exports.Capitalize = function Capitalize(_ref) {
   var str = _ref.str;
