@@ -3,18 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "LoginPage", {
-  enumerable: true,
-  get: function get() {
-    return _LoginPage["default"];
-  }
-});
-Object.defineProperty(exports, "Register", {
-  enumerable: true,
-  get: function get() {
-    return _Register["default"];
-  }
-});
-var _LoginPage = _interopRequireDefault(require("./Pages/Login/LoginPage"));
-var _Register = _interopRequireDefault(require("./Pages/Register/Register"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+exports.Capitalize = void 0;
+var Capitalize = exports.Capitalize = function Capitalize(_ref) {
+  var str = _ref.str;
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
