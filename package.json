@@ -1,11 +1,12 @@
 {
   "name": "login-grandautomation",
-  "version": "1.25.0",
+  "version": "1.26.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "dist/index.js",
-  "module": "dist/index.js","publishConfig": {
+  "module": "dist/index.js",
+  "publishConfig": {
     "access": "restricted"
- },
+  },
   "dependencies": {
     "@babel/cli": "^7.24.1",
     "@emotion/react": "^11.11.4",
@@ -74,5 +75,4 @@
     "style-loader": "^3.3.4",
     "tailwindcss": "^3.4.3"
   }
- 
 }
