@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import '../../index.css';
 function LoginPage() {
   useEffect(() => {
     document.title = "Grand Automation | Login";
