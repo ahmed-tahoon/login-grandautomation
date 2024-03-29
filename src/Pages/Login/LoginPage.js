@@ -9,7 +9,6 @@ function LoginPage() {
     document.title = "Grand Automation | Login";
   }, []);
 
-  const { authData, setAuthData, setToken } = useContext(userIsLoginContext);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
