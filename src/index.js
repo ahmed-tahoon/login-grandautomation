@@ -1,2 +1,3 @@
 // login and register
-export { default as LoginPage } from './Pages/Login/LoginPage';
+import "./index.css";
+export { default as LoginPage } from "./Pages/Login/LoginPage";
