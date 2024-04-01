@@ -48,7 +48,7 @@ function LoginPage(_ref) {
     }),
     onSubmit: function () {
       var _onSubmit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(values, _ref2) {
-        var resetForm, setSubmitting, data;
+        var resetForm, setSubmitting, data, requestOptions;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -65,27 +65,33 @@ function LoginPage(_ref) {
                 app: app
               };
               setLoading(true);
-
-              // submit the data
-              _context.next = 5;
-              return _axios["default"].post("https://api-staging.grandautomation.io/api/login", data).then(function (res) {
-                console.log(res);
-                if (res.data.data.status === "success") {
-                  var token = res.data.data.token;
+              requestOptions = {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+              }; // submit the data
+              fetch("https://api-staging.grandautomation.io/api/login", requestOptions).then(function (response) {
+                return response.json();
+              }).then(function (data) {
+                console.log(data);
+                if (data.data.status === "success") {
+                  var token = data.data.token;
                   var iframeUrl = "".concat(_config.ga.GA_URL, "/sso?token=").concat(encodeURIComponent(token));
                   var targetIframe = document.getElementById("targetIframe");
                   targetIframe.src = iframeUrl;
-                  submit(res.data.data);
+                  submit(data.data);
                 } else {
-                  setError(res.data.error.message);
+                  setError(data.error.message);
                 }
-              })["catch"](function (err) {
-                console.log(err);
+              })["catch"](function (error) {
+                console.error("Error:", error);
+              })["finally"](function () {
+                setLoading(false);
+                submit(data);
               });
             case 5:
-              setLoading(false);
-              submit(data);
-            case 7:
             case "end":
               return _context.stop();
           }

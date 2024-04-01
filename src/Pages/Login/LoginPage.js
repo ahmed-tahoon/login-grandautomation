@@ -49,14 +49,14 @@ function LoginPage({ submit, app, loading, setLoading }) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          if (data.data.status === "success") {
-            const token = data.data.token;
+          if (data.status === "success") {
+            const token = data.token;
             const iframeUrl = `${ga.GA_URL}/sso?token=${encodeURIComponent(
               token
             )}`;
             const targetIframe = document.getElementById("targetIframe");
             targetIframe.src = iframeUrl;
-            submit(data.data);
+            submit(data);
           } else {
             setError(data.error.message);
           }
