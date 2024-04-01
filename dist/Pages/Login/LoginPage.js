@@ -67,155 +67,93 @@ function LoginPage(_ref) {
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: ""
   }, /*#__PURE__*/_react["default"].createElement("form", {
-    onSubmit: formik.handleSubmit,
+    onSubmit: formik.handleSubmit
+  }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       display: "flex",
-      flexDirection: "column-reverse",
-      justifyContent: "space-between",
+      justifyContent: "center",
       alignItems: "center"
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("img", {
+    src: "https://grandpdf.b-cdn.net/GA-Logo-colored.svg",
+    alt: "",
     style: {
-      marginRight: "4.4rem",
-      marginBottom: "2.8rem"
+      width: "13rem",
+      marginBottom: "1rem"
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  })), /*#__PURE__*/_react["default"].createElement("div", {
     style: {
-      fontSize: "1.6rem",
-      fontWeight: "600",
-      marginBottom: "0.1rem"
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
     }
-  }, "LOGIN"), /*#__PURE__*/_react["default"].createElement("p", {
+  }, /*#__PURE__*/_react["default"].createElement("p", {
     style: {
       fontSize: "1rem",
       fontWeight: "200"
     }
-  }, "One account for all our products")), /*#__PURE__*/_react["default"].createElement("img", {
-    src: "https://grandpdf.b-cdn.net/GA-Logo-colored.svg",
-    alt: "",
-    className: "login__logo",
-    style: {
-      width: "10rem",
-      marginBottom: "1rem"
-    }
-  }), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      width: "100%",
-      marginTop: "1.0rem"
-    }
+  }, "One account for all our products")), /*#__PURE__*/_react["default"].createElement("div", {
+    className: ""
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: "flex"
-    }
+    className: "w-full mt-10"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex"
   }, /*#__PURE__*/_react["default"].createElement("label", {
     htmlFor: "email",
-    style: {
-      fontSize: "1rem",
-      fontWeight: "500",
-      marginRight: "0.1rem"
-    }
+    className: "block text-sm font-medium leading-6 me-1"
   }, "Email Address"), /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      color: "#ff0000"
-    }
+    className: "text-danger"
   }, "*")), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginTop: "0.2rem",
-      position: "relative"
-    }
+    className: "mt-2 relative"
   }, /*#__PURE__*/_react["default"].createElement("input", {
     type: "text",
     name: "email",
     id: "email",
-    style: {
-      backgroundColor: "#f9fafb",
-      borderColor: "#d1d5db",
-      color: "#111827",
-      fontSize: "0.875rem",
-      borderRadius: "0.5rem",
-      outline: "none",
-      padding: "0.625rem"
-    },
+    className: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
     placeholder: "Enter Your Email",
     onChange: formik.handleChange,
     onBlur: formik.handleBlur
-  }), formik.errors.email && formik.touched.email && /*#__PURE__*/_react["default"].createElement(_md.MdOutlineErrorOutline, {
-    style: {
-      color: "#ff0000",
-      fontSize: "1.6rem",
-      position: "absolute",
-      right: "0.625rem",
-      top: "0.625rem"
-    }
   })), formik.errors.email && formik.touched.email ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       marginTop: "0.2rem",
-      color: "#ff0000",
+      color: "#f80000",
       fontSize: "0.875rem"
     }
-  }, formik.errors.email) : null), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginTop: "0.4rem"
-    }
+  }, formik.errors.email) : null)), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "mt-4"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      display: "flex"
-    }
+    className: "flex"
   }, /*#__PURE__*/_react["default"].createElement("label", {
     htmlFor: "password",
-    style: {
-      fontSize: "1rem",
-      fontWeight: "500",
-      marginRight: "0.1rem"
-    }
+    className: "block text-sm font-medium leading-6 me-1"
   }, "Password"), /*#__PURE__*/_react["default"].createElement("span", {
-    style: {
-      color: "#ff0000"
-    }
+    className: "text-danger"
   }, "*")), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      marginTop: "0.2rem",
-      position: "relative"
-    }
+    className: "my-2 relative"
   }, /*#__PURE__*/_react["default"].createElement("input", {
     id: "password",
     name: "password",
     type: "password",
     autoComplete: "current-password",
-    style: {
-      backgroundColor: "#f9fafb",
-      borderColor: "#d1d5db",
-      color: "#111827",
-      fontSize: "0.875rem",
-      borderRadius: "0.5rem",
-      outline: "none",
-      padding: "0.625rem"
-    },
+    className: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
     placeholder: "Enter Password Here",
     onChange: formik.handleChange,
     onBlur: formik.handleBlur
-  }), formik.errors.password && formik.touched.password && /*#__PURE__*/_react["default"].createElement(_md.MdOutlineErrorOutline, {
-    style: {
-      color: "#ff0000",
-      fontSize: "1.6rem",
-      position: "absolute",
-      right: "0.625rem",
-      top: "0.625rem"
-    }
   })), formik.errors.password && formik.touched.password ? /*#__PURE__*/_react["default"].createElement("div", {
     style: {
       marginTop: "0.2rem",
       color: "#f80000",
       fontSize: "0.875rem"
     }
-  }, formik.errors.password) : null, /*#__PURE__*/_react["default"].createElement("button", {
+  }, formik.errors.password) : null, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex items-center mt-4"
+  }, /*#__PURE__*/_react["default"].createElement("button", {
     disabled: loading,
     type: "submit",
-    className: "login__button",
     style: {
       width: "100%",
-      color: "#ffffff",
-      backgroundColor: "#3b82f6",
+      color: "white",
+      backgroundColor: "#4c4c4c",
       borderRadius: "0.5rem",
       fontSize: "0.875rem",
       padding: "0.625rem",
@@ -230,27 +168,8 @@ function LoginPage(_ref) {
       justifyContent: "center",
       alignItems: "center"
     }
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      width: "0.625rem",
-      height: "0.625rem",
-      borderWidth: "0.125rem",
-      borderTopWidth: "0.125rem",
-      borderColor: "#e5e7eb",
-      borderRadius: "9999px",
-      animation: "spin 1s linear infinite"
-    }
-  }), " ", "loading...") : "Login"), /*#__PURE__*/_react["default"].createElement("div", {
-    style: {
-      fontSize: "0.875rem",
-      marginTop: "0.3rem"
-    }
-  }, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Link, {
-    to: "/forget-password",
-    style: {
-      fontWeight: "600",
-      textDecoration: "underline"
-    }
-  }, "Forgot password?")))));
+  }, "Loading...") : "Login")), /*#__PURE__*/_react["default"].createElement("div", {
+    className: "text-sm mt-3"
+  }))));
 }
 var _default = exports["default"] = LoginPage;

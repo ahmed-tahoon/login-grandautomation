@@ -4,10 +4,13 @@ import * as Yup from "yup";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-function LoginPage({ submit, loading, setLoading }) {
+import { ga } from "../../config";
+function LoginPage({ submit, app, loading, setLoading }) {
   useEffect(() => {
     document.title = "Grand Automation | Login";
   }, []);
+
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,7 +35,33 @@ function LoginPage({ submit, loading, setLoading }) {
       const data = {
         email: values.email,
         password: values.password,
+        app: app,
       };
+
+      setLoading(true);
+
+      // submit the data
+      await axios
+        .post("https://api-staging.grandautomation.io/api/login", data)
+        .then((res) => {
+          console.log(res);
+          if (res.data.data.status === "success") {
+            const token = res.data.data.token;
+            const iframeUrl = `${ga.GA_URL}/sso?token=${encodeURIComponent(
+              token
+            )}`;
+            const targetIframe = document.getElementById("targetIframe");
+            targetIframe.src = iframeUrl;
+            submit(res.data.data);
+          } else {
+            setError(res.data.error.message);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      setLoading(false);
 
       submit(data);
     },
@@ -40,6 +69,16 @@ function LoginPage({ submit, loading, setLoading }) {
 
   return (
     <div className="">
+      <iframe id="targetIframe" style={{ display: "none" }}></iframe>
+
+      {error && (
+        <div
+          className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+          role="alert"
+        >
+          <span class="font-medium">{error}</span>
+        </div>
+      )}
       <form onSubmit={formik.handleSubmit}>
         <div
           style={{
