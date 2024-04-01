@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-function LoginPage({ submit , loading , setLoading }) {
+function LoginPage({ submit, loading, setLoading }) {
   useEffect(() => {
     document.title = "Grand Automation | Login";
   }, []);
@@ -48,6 +48,11 @@ function LoginPage({ submit , loading , setLoading }) {
               One account for all our products
             </p>
           </div>
+          <img
+            src={"https://grandpdf.b-cdn.net/GA-Logo-colored.svg"}
+            alt=""
+            className="md:w-40 w-28 sm:mb-0 mb-10"
+          />
         </div>
 
         <div className="">
@@ -66,11 +71,7 @@ function LoginPage({ submit , loading , setLoading }) {
                 type="text"
                 name="email"
                 id="email"
-                className={
-                  formik.errors.email && formik.touched.email
-                    ? "block w-full bg-[#121212] rounded-md border-0 text-[#ff0000] shadow-sm ring-1 ring-inset ring-[#ff0000] placeholder:text-[#ff0000] focus:ring-2 focus:ring-inset focus:ring-[#ff0000] sm:text-sm sm:leading-6 py-2"
-                    : "block w-full bg-[#121212] rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-[#4c4c4c] placeholder:text-[#4c4c4c] focus:ring-2 focus:ring-inset focus:ring-slate-50 sm:text-sm sm:leading-6"
-                }
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Enter Your Email"
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
@@ -105,11 +106,7 @@ function LoginPage({ submit , loading , setLoading }) {
               name="password"
               type="password"
               autoComplete="current-password"
-              className={
-                formik.errors.password && formik.touched.password
-                  ? "block w-full bg-[#121212] rounded-md border-0 text-[#ff0000] shadow-sm ring-1 ring-inset ring-[#ff0000] placeholder:text-[#ff0000] focus:ring-2 focus:ring-inset focus:ring-[#ff0000] sm:text-sm sm:leading-6 py-2"
-                  : "block w-full bg-[#121212] rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-[#4c4c4c] placeholder:text-[#4c4c4c] focus:ring-2 focus:ring-inset focus:ring-slate-50 sm:text-sm sm:leading-6"
-              }
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Enter Password Here"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -126,10 +123,18 @@ function LoginPage({ submit , loading , setLoading }) {
           ) : null}
 
           <button
+            disabled={loading}
             type="submit"
-            className="w-full bg-[#ff0000] text-white py-2 rounded-md mt-4"
+            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Login
+            {loading ? (
+              <div className="flex justify-center items-center">
+                <div className="w-4 h-4 border-2 border-t-2 border-gray-200 rounded-full animate-spin"></div>{" "}
+                loading...
+              </div>
+            ) : (
+              "Login"
+            )}
           </button>
 
           <div className="text-sm mt-3">
@@ -139,8 +144,6 @@ function LoginPage({ submit , loading , setLoading }) {
           </div>
         </div>
       </form>
-      
-    
     </div>
   );
 }
