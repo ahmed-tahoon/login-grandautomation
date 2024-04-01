@@ -77,7 +77,7 @@ function LoginPage(_ref) {
               }).then(function (data) {
                 console.log(data, "data");
                 console.log(data.data.status, "token");
-                if (data.data.status == "success") {
+                if (data.success) {
                   console.log(data.data.token, "token");
                   var token = data.data.token;
                   var iframeUrl = "".concat(_config.ga.GA_URL, "sso?token=").concat(encodeURIComponent(token));

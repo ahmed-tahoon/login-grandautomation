@@ -50,7 +50,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
         .then((data) => {
 
           console.log(data, "data");
-          console.log(data.data.status, "token");
+          // console.log(data.data.status, "token");
 
           if (data.success) {
             console.log(data.data.token, "token");
