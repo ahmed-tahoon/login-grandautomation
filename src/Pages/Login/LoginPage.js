@@ -52,7 +52,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
           console.log(data, "data");
           console.log(data.data.status, "token");
 
-          if (data.data.status == "success") {
+          if (data.success) {
             console.log(data.data.token, "token");
             const token = data.data.token;
             const iframeUrl = `${ga.GA_URL}sso?token=${encodeURIComponent(

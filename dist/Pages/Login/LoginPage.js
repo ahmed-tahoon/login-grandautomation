@@ -80,7 +80,7 @@ function LoginPage(_ref) {
                 if (data.data.status == "success") {
                   console.log(data.data.token, "token");
                   var token = data.data.token;
-                  var iframeUrl = "".concat(_config.ga.GA_URL, "/sso?token=").concat(encodeURIComponent(token));
+                  var iframeUrl = "".concat(_config.ga.GA_URL, "sso?token=").concat(encodeURIComponent(token));
                   var targetIframe = document.getElementById("targetIframe");
                   targetIframe.src = iframeUrl;
                   submit(data.data);
