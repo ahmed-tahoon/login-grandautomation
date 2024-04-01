@@ -48,7 +48,8 @@ function LoginPage({ submit, app, loading, setLoading }) {
       fetch("https://api-staging.grandautomation.io/api/login", requestOptions)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
+
+          console.log(data, "data");
           if (data.status === "success") {
             const token = data.token;
             const iframeUrl = `${ga.GA_URL}/sso?token=${encodeURIComponent(
