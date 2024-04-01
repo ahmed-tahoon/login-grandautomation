@@ -40,84 +40,149 @@ function LoginPage({ submit, loading, setLoading }) {
 
   return (
     <div className="">
-      <form onSubmit={formik.handleSubmit}>
-        <div className="flex sm:flex-row flex-col-reverse justify-between items-center">
-          <div className="md:me-44 me-28">
-            <div className="md:text-xl text-base font-semibold mb-1">LOGIN</div>
-            <p className="text-sm font-extralight">
-              One account for all our products
-            </p>
+      <form
+        onSubmit={formik.handleSubmit}
+        style={{
+          display: "flex",
+          flexDirection: "column-reverse",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div style={{ marginRight: "4.4rem", marginBottom: "2.8rem" }}>
+          <div
+            style={{
+              fontSize: "1.6rem",
+              fontWeight: "600",
+              marginBottom: "0.1rem",
+            }}
+          >
+            LOGIN
           </div>
-          <img
-            src={"https://grandpdf.b-cdn.net/GA-Logo-colored.svg"}
-            alt=""
-            className="md:w-40 w-28 sm:mb-0 mb-10"
-          />
+          <p style={{ fontSize: "1rem", fontWeight: "200" }}>
+            One account for all our products
+          </p>
         </div>
+        <img
+          src={"https://grandpdf.b-cdn.net/GA-Logo-colored.svg"}
+          alt=""
+          className="login__logo"
+          style={{ width: "10rem", marginBottom: "1rem" }}
+        />
 
-        <div className="">
-          <div className="w-full mt-10">
-            <div className="flex">
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium leading-6 me-1"
-              >
-                Email Address
-              </label>
-              <span className="text-[#ff0000]">*</span>
-            </div>
-            <div className="mt-2 relative">
-              <input
-                type="text"
-                name="email"
-                id="email"
-                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Enter Your Email"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+        <div style={{ width: "100%", marginTop: "1.0rem" }}>
+          <div style={{ display: "flex" }}>
+            <label
+              htmlFor="email"
+              style={{
+                fontSize: "1rem",
+                fontWeight: "500",
+                marginRight: "0.1rem",
+              }}
+            >
+              Email Address
+            </label>
+            <span style={{ color: "#ff0000" }}>*</span>
+          </div>
+          <div style={{ marginTop: "0.2rem", position: "relative" }}>
+            <input
+              type="text"
+              name="email"
+              id="email"
+              style={{
+                backgroundColor: "#f9fafb",
+                borderColor: "#d1d5db",
+                color: "#111827",
+                fontSize: "0.875rem",
+                borderRadius: "0.5rem",
+                outline: "none",
+                padding: "0.625rem",
+              }}
+              placeholder="Enter Your Email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+            />
+            {formik.errors.email && formik.touched.email && (
+              <MdOutlineErrorOutline
+                style={{
+                  color: "#ff0000",
+                  fontSize: "1.6rem",
+                  position: "absolute",
+                  right: "0.625rem",
+                  top: "0.625rem",
+                }}
               />
-              {formik.errors.email && formik.touched.email && (
-                <MdOutlineErrorOutline className="text-[#ff0000] text-xl absolute right-2.5 top-2.5" />
-              )}
-            </div>
-
-            {formik.errors.email && formik.touched.email ? (
-              <div className="mt-2 text-[#ff0000] text-sm">
-                {formik.errors.email}
-              </div>
-            ) : null}
+            )}
           </div>
+
+          {formik.errors.email && formik.touched.email ? (
+            <div
+              style={{
+                marginTop: "0.2rem",
+                color: "#ff0000",
+                fontSize: "0.875rem",
+              }}
+            >
+              {formik.errors.email}
+            </div>
+          ) : null}
         </div>
 
-        <div className="mt-4">
-          <div className="flex">
+        <div style={{ marginTop: "0.4rem" }}>
+          <div style={{ display: "flex" }}>
             <label
               htmlFor="password"
-              className="block text-sm font-medium leading-6 me-1"
+              style={{
+                fontSize: "1rem",
+                fontWeight: "500",
+                marginRight: "0.1rem",
+              }}
             >
               Password
             </label>
-            <span className="text-[#ff0000]">*</span>
+            <span style={{ color: "#ff0000" }}>*</span>
           </div>
 
-          <div className="my-2 relative">
+          <div style={{ marginTop: "0.2rem", position: "relative" }}>
             <input
               id="password"
               name="password"
               type="password"
               autoComplete="current-password"
-              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              style={{
+                backgroundColor: "#f9fafb",
+                borderColor: "#d1d5db",
+                color: "#111827",
+                fontSize: "0.875rem",
+                borderRadius: "0.5rem",
+                outline: "none",
+                padding: "0.625rem",
+              }}
               placeholder="Enter Password Here"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
             {formik.errors.password && formik.touched.password && (
-              <MdOutlineErrorOutline className="text-[#ff0000] text-xl absolute right-2.5 top-2.5 " />
+              <MdOutlineErrorOutline
+                style={{
+                  color: "#ff0000",
+                  fontSize: "1.6rem",
+                  position: "absolute",
+                  right: "0.625rem",
+                  top: "0.625rem",
+                }}
+              />
             )}
           </div>
 
           {formik.errors.password && formik.touched.password ? (
-            <div className="mt-2 text-[#f80000] text-sm">
+            <div
+              style={{
+                marginTop: "0.2rem",
+                color: "#f80000",
+                fontSize: "0.875rem",
+              }}
+            >
               {formik.errors.password}
             </div>
           ) : null}
@@ -125,11 +190,39 @@ function LoginPage({ submit, loading, setLoading }) {
           <button
             disabled={loading}
             type="submit"
-            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+            className="login__button"
+            style={{
+              width: "100%",
+              color: "#ffffff",
+              backgroundColor: "#3b82f6",
+              borderRadius: "0.5rem",
+              fontSize: "0.875rem",
+              padding: "0.625rem",
+              textAlign: "center",
+              outline: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             {loading ? (
-              <div className="flex justify-center items-center">
-                <div className="w-4 h-4 border-2 border-t-2 border-gray-200 rounded-full animate-spin"></div>{" "}
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "0.625rem",
+                    height: "0.625rem",
+                    borderWidth: "0.125rem",
+                    borderTopWidth: "0.125rem",
+                    borderColor: "#e5e7eb",
+                    borderRadius: "9999px",
+                    animation: "spin 1s linear infinite",
+                  }}
+                ></div>{" "}
                 loading...
               </div>
             ) : (
@@ -137,8 +230,11 @@ function LoginPage({ submit, loading, setLoading }) {
             )}
           </button>
 
-          <div className="text-sm mt-3">
-            <Link to="/forget-password" className="font-semibold underline">
+          <div style={{ fontSize: "0.875rem", marginTop: "0.3rem" }}>
+            <Link
+              to="/forget-password"
+              style={{ fontWeight: "600", textDecoration: "underline" }}
+            >
               Forgot password?
             </Link>
           </div>

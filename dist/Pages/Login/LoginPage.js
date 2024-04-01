@@ -76,7 +76,11 @@ function LoginPage(_ref) {
     className: "md:text-xl text-base font-semibold mb-1"
   }, "LOGIN"), /*#__PURE__*/_react["default"].createElement("p", {
     className: "text-sm font-extralight"
-  }, "One account for all our products"))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "One account for all our products")), /*#__PURE__*/_react["default"].createElement("img", {
+    src: "https://grandpdf.b-cdn.net/GA-Logo-colored.svg",
+    alt: "",
+    className: "md:w-40 w-28 sm:mb-0 mb-10"
+  })), /*#__PURE__*/_react["default"].createElement("div", {
     className: ""
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "w-full mt-10"
@@ -93,7 +97,7 @@ function LoginPage(_ref) {
     type: "text",
     name: "email",
     id: "email",
-    className: formik.errors.email && formik.touched.email ? "block w-full bg-[#121212] rounded-md border-0 text-[#ff0000] shadow-sm ring-1 ring-inset ring-[#ff0000] placeholder:text-[#ff0000] focus:ring-2 focus:ring-inset focus:ring-[#ff0000] sm:text-sm sm:leading-6 py-2" : "block w-full bg-[#121212] rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-[#4c4c4c] placeholder:text-[#4c4c4c] focus:ring-2 focus:ring-inset focus:ring-slate-50 sm:text-sm sm:leading-6",
+    className: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
     placeholder: "Enter Your Email",
     onChange: formik.handleChange,
     onBlur: formik.handleBlur
@@ -117,7 +121,7 @@ function LoginPage(_ref) {
     name: "password",
     type: "password",
     autoComplete: "current-password",
-    className: formik.errors.password && formik.touched.password ? "block w-full bg-[#121212] rounded-md border-0 text-[#ff0000] shadow-sm ring-1 ring-inset ring-[#ff0000] placeholder:text-[#ff0000] focus:ring-2 focus:ring-inset focus:ring-[#ff0000] sm:text-sm sm:leading-6 py-2" : "block w-full bg-[#121212] rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset ring-[#4c4c4c] placeholder:text-[#4c4c4c] focus:ring-2 focus:ring-inset focus:ring-slate-50 sm:text-sm sm:leading-6",
+    className: "bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500",
     placeholder: "Enter Password Here",
     onChange: formik.handleChange,
     onBlur: formik.handleBlur
@@ -126,9 +130,14 @@ function LoginPage(_ref) {
   })), formik.errors.password && formik.touched.password ? /*#__PURE__*/_react["default"].createElement("div", {
     className: "mt-2 text-[#f80000] text-sm"
   }, formik.errors.password) : null, /*#__PURE__*/_react["default"].createElement("button", {
+    disabled: loading,
     type: "submit",
-    className: "w-full bg-[#ff0000] text-white py-2 rounded-md mt-4"
-  }, "Login"), /*#__PURE__*/_react["default"].createElement("div", {
+    "class": "w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+  }, loading ? /*#__PURE__*/_react["default"].createElement("div", {
+    className: "flex justify-center items-center"
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: "w-4 h-4 border-2 border-t-2 border-gray-200 rounded-full animate-spin"
+  }), " ", "loading...") : "Login"), /*#__PURE__*/_react["default"].createElement("div", {
     className: "text-sm mt-3"
   }, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Link, {
     to: "/forget-password",
