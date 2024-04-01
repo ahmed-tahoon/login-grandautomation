@@ -76,12 +76,12 @@ function LoginPage(_ref) {
                 return response.json();
               }).then(function (data) {
                 console.log(data, "data");
-                if (data.status === "success") {
-                  var token = data.token;
+                if (data.data.status === "success") {
+                  var token = data.data.token;
                   var iframeUrl = "".concat(_config.ga.GA_URL, "/sso?token=").concat(encodeURIComponent(token));
                   var targetIframe = document.getElementById("targetIframe");
                   targetIframe.src = iframeUrl;
-                  submit(data);
+                  submit(data.data);
                 } else {
                   setError(data.error.message);
                 }
