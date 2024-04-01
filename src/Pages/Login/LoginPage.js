@@ -39,31 +39,37 @@ function LoginPage({ submit, app, loading, setLoading }) {
       };
 
       setLoading(true);
-
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      };
       // submit the data
-      await axios
-        .post("https://api-staging.grandautomation.io/api/login", data)
-        .then((res) => {
-          console.log(res);
-          if (res.data.data.status === "success") {
-            const token = res.data.data.token;
+      fetch("https://api-staging.grandautomation.io/api/login", requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (data.data.status === "success") {
+            const token = data.data.token;
             const iframeUrl = `${ga.GA_URL}/sso?token=${encodeURIComponent(
               token
             )}`;
             const targetIframe = document.getElementById("targetIframe");
             targetIframe.src = iframeUrl;
-            submit(res.data.data);
+            submit(data.data);
           } else {
-            setError(res.data.error.message);
+            setError(data.error.message);
           }
         })
-        .catch((err) => {
-          console.log(err);
+        .catch((error) => {
+          console.error("Error:", error);
+        })
+        .finally(() => {
+          setLoading(false);
+          submit(data);
         });
 
-      setLoading(false);
-
-      submit(data);
+   
     },
   });
 
