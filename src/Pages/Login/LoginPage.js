@@ -50,14 +50,14 @@ function LoginPage({ submit, app, loading, setLoading }) {
         .then((data) => {
 
           console.log(data, "data");
-          if (data.status === "success") {
-            const token = data.token;
+          if (data.data.status === "success") {
+            const token = data.data.token;
             const iframeUrl = `${ga.GA_URL}/sso?token=${encodeURIComponent(
               token
             )}`;
             const targetIframe = document.getElementById("targetIframe");
             targetIframe.src = iframeUrl;
-            submit(data);
+            submit(data.data);
           } else {
             setError(data.error.message);
           }
