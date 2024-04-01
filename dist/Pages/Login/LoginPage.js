@@ -76,14 +76,16 @@ function LoginPage(_ref) {
                 return response.json();
               }).then(function (data) {
                 console.log(data, "data");
-                if (data.data.status === "success") {
+                console.log(data.data.status, "token");
+                if (data.data.status == "success") {
+                  console.log(data.data.token, "token");
                   var token = data.data.token;
                   var iframeUrl = "".concat(_config.ga.GA_URL, "/sso?token=").concat(encodeURIComponent(token));
                   var targetIframe = document.getElementById("targetIframe");
                   targetIframe.src = iframeUrl;
                   submit(data.data);
                 } else {
-                  setError(data.error.message);
+                  // setError(data.error.message);
                 }
               })["catch"](function (error) {
                 console.error("Error:", error);

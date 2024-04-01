@@ -55,7 +55,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
           if (data.data.status == "success") {
             console.log(data.data.token, "token");
             const token = data.data.token;
-            const iframeUrl = `${ga.GA_URL}/sso?token=${encodeURIComponent(
+            const iframeUrl = `${ga.GA_URL}sso?token=${encodeURIComponent(
               token
             )}`;
             const targetIframe = document.getElementById("targetIframe");
