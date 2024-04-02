@@ -5,7 +5,7 @@ import { MdOutlineErrorOutline } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ga } from "../../config";
-function LoginPage({ submit, app, loading, setLoading }) {
+function LoginPage({ submit, app, loading, setLoading, redirect = false }) {
   useEffect(() => {
     document.title = "Grand Automation | Login";
   }, []);
@@ -41,7 +41,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
 
       setLoading(true);
       setError(false);
-      
+
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -53,7 +53,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
         .then((data) => {
           console.log(data, "data");
           // console.log(data.data.status, "token");
-            
+
           if (data.success) {
             console.log(data.data.token, "token");
             const token = data.data.token;
@@ -66,26 +66,27 @@ function LoginPage({ submit, app, loading, setLoading }) {
             // newWindow.opener.focus();
 
             // Open new window with a size of 0x0 pixels
-            const newWindow = window.open(
-              iframeUrl,
-              "winname",
-              "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350"
-            );
+            if (!redirect) {
+              const newWindow = window.open(
+                iframeUrl,
+                "winname",
+                "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350"
+              );
 
-            newWindow.document.write("<html><body></body></html>");
+              newWindow.document.write("<html><body></body></html>");
 
-            // Set window location to the URL
-            newWindow.location.href = iframeUrl;
+              // Set window location to the URL
+              newWindow.location.href = iframeUrl;
+            }
 
             // Close the window immediately after redirecting
             setTimeout(() => {
               newWindow.close();
             }, 1000); // Adjust the delay if needed
-            setSuccess('Login Successful! Redirecting to Dashboard...')
+            setSuccess("Login Successful! Redirecting to Dashboard...");
             submit(data.data);
-
           } else {
-           setError(data.error.message);
+            setError(data.error.message);
           }
         })
         .catch((error) => {
@@ -110,16 +111,14 @@ function LoginPage({ submit, app, loading, setLoading }) {
           <span class="font-medium">{error}</span>
         </div>
       )}
-      {
-        success && (
-          <div
-            className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
-            role="alert"
-          >
-            <span class="font-medium">{success}</span>
-          </div>
-        )
-      }
+      {success && (
+        <div
+          className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+          role="alert"
+        >
+          <span class="font-medium">{success}</span>
+        </div>
+      )}
       <form onSubmit={formik.handleSubmit}>
         <div
           style={{
