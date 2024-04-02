@@ -48,7 +48,6 @@ function LoginPage({ submit, app, loading, setLoading }) {
       fetch("https://api-staging.grandautomation.io/api/login", requestOptions)
         .then((response) => response.json())
         .then((data) => {
-
           console.log(data, "data");
           // console.log(data.data.status, "token");
 
@@ -58,9 +57,29 @@ function LoginPage({ submit, app, loading, setLoading }) {
             const iframeUrl = `${ga.GA_URL}sso?token=${encodeURIComponent(
               token
             )}`;
-            const targetIframe = document.getElementById("targetIframe");
-            targetIframe.src = iframeUrl;
-            submit(data.data);
+            // Open new window with the URL without showing it
+            // const newWindow = window.open(iframeUrl, '_blank', 'height=1,width=1,left=-1000,top=-1000');
+            // newWindow.blur();
+            // newWindow.opener.focus();
+
+            // Open new window with a size of 0x0 pixels
+            const newWindow = window.open(
+              iframeUrl,
+              "winname",
+              "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350"
+            );
+
+            newWindow.document.write("<html><body></body></html>");
+
+            // Set window location to the URL
+            newWindow.location.href = iframeUrl;
+
+            // Close the window immediately after redirecting
+            setTimeout(() => {
+              newWindow.close();
+              submit(data.data);
+            }, 1000); // Adjust the delay if needed
+
           } else {
             // setError(data.error.message);
           }
@@ -72,8 +91,6 @@ function LoginPage({ submit, app, loading, setLoading }) {
           setLoading(false);
           submit(data);
         });
-
-   
     },
   });
 
