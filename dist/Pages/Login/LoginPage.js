@@ -28,7 +28,9 @@ function LoginPage(_ref) {
   var submit = _ref.submit,
     app = _ref.app,
     loading = _ref.loading,
-    setLoading = _ref.setLoading;
+    setLoading = _ref.setLoading,
+    _ref$redirect = _ref.redirect,
+    redirect = _ref$redirect === void 0 ? false : _ref$redirect;
   (0, _react.useEffect)(function () {
     document.title = "Grand Automation | Login";
   }, []);
@@ -36,6 +38,10 @@ function LoginPage(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     error = _useState2[0],
     setError = _useState2[1];
+  var _useState3 = (0, _react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    success = _useState4[0],
+    setSuccess = _useState4[1];
   var navigate = (0, _reactRouterDom.useNavigate)();
   var formik = (0, _formik.useFormik)({
     initialValues: {
@@ -65,6 +71,7 @@ function LoginPage(_ref) {
                 app: app
               };
               setLoading(true);
+              setError(false);
               requestOptions = {
                 method: "POST",
                 headers: {
@@ -88,17 +95,20 @@ function LoginPage(_ref) {
                   // newWindow.opener.focus();
 
                   // Open new window with a size of 0x0 pixels
-                  var newWindow = window.open(iframeUrl, "winname", "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350");
-                  newWindow.document.write("<html><body></body></html>");
+                  if (!redirect) {
+                    var _newWindow = window.open(iframeUrl, "winname", "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350");
+                    _newWindow.document.write("<html><body></body></html>");
 
-                  // Set window location to the URL
-                  newWindow.location.href = iframeUrl;
+                    // Set window location to the URL
+                    _newWindow.location.href = iframeUrl;
+                  }
 
                   // Close the window immediately after redirecting
                   setTimeout(function () {
                     newWindow.close();
-                    submit(data.data);
                   }, 1000); // Adjust the delay if needed
+                  setSuccess("Login Successful! Redirecting to Dashboard...");
+                  submit(data.data);
                 } else {
                   setError(data.error.message);
                 }
@@ -108,7 +118,7 @@ function LoginPage(_ref) {
                 setLoading(false);
                 submit(data);
               });
-            case 5:
+            case 6:
             case "end":
               return _context.stop();
           }
@@ -132,7 +142,12 @@ function LoginPage(_ref) {
     role: "alert"
   }, /*#__PURE__*/_react["default"].createElement("span", {
     "class": "font-medium"
-  }, error)), /*#__PURE__*/_react["default"].createElement("form", {
+  }, error)), success && /*#__PURE__*/_react["default"].createElement("div", {
+    className: "p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400",
+    role: "alert"
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    "class": "font-medium"
+  }, success)), /*#__PURE__*/_react["default"].createElement("form", {
     onSubmit: formik.handleSubmit
   }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
