@@ -11,6 +11,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
   }, []);
 
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const navigate = useNavigate();
 
@@ -39,6 +40,8 @@ function LoginPage({ submit, app, loading, setLoading }) {
       };
 
       setLoading(true);
+      setError(false);
+      
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -50,7 +53,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
         .then((data) => {
           console.log(data, "data");
           // console.log(data.data.status, "token");
-
+            
           if (data.success) {
             console.log(data.data.token, "token");
             const token = data.data.token;
@@ -77,8 +80,9 @@ function LoginPage({ submit, app, loading, setLoading }) {
             // Close the window immediately after redirecting
             setTimeout(() => {
               newWindow.close();
-              submit(data.data);
             }, 1000); // Adjust the delay if needed
+            setSuccess('Login Successful! Redirecting to Dashboard...')
+            submit(data.data);
 
           } else {
            setError(data.error.message);
@@ -106,6 +110,16 @@ function LoginPage({ submit, app, loading, setLoading }) {
           <span class="font-medium">{error}</span>
         </div>
       )}
+      {
+        success && (
+          <div
+            className="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+            role="alert"
+          >
+            <span class="font-medium">{success}</span>
+          </div>
+        )
+      }
       <form onSubmit={formik.handleSubmit}>
         <div
           style={{
