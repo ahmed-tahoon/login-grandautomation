@@ -100,7 +100,7 @@ function LoginPage(_ref) {
                     submit(data.data);
                   }, 1000); // Adjust the delay if needed
                 } else {
-                  // setError(data.error.message);
+                  setError(data.error.message);
                 }
               })["catch"](function (error) {
                 console.error("Error:", error);
