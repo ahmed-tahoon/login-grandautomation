@@ -81,7 +81,7 @@ function LoginPage({ submit, app, loading, setLoading }) {
             }, 1000); // Adjust the delay if needed
 
           } else {
-            // setError(data.error.message);
+           setError(data.error.message);
           }
         })
         .catch((error) => {

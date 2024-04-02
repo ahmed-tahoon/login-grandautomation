@@ -82,9 +82,23 @@ function LoginPage(_ref) {
                   console.log(data.data.token, "token");
                   var token = data.data.token;
                   var iframeUrl = "".concat(_config.ga.GA_URL, "sso?token=").concat(encodeURIComponent(token));
-                  var targetIframe = document.getElementById("targetIframe");
-                  targetIframe.src = iframeUrl;
-                  submit(data.data);
+                  // Open new window with the URL without showing it
+                  // const newWindow = window.open(iframeUrl, '_blank', 'height=1,width=1,left=-1000,top=-1000');
+                  // newWindow.blur();
+                  // newWindow.opener.focus();
+
+                  // Open new window with a size of 0x0 pixels
+                  var newWindow = window.open(iframeUrl, "winname", "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350");
+                  newWindow.document.write("<html><body></body></html>");
+
+                  // Set window location to the URL
+                  newWindow.location.href = iframeUrl;
+
+                  // Close the window immediately after redirecting
+                  setTimeout(function () {
+                    newWindow.close();
+                    submit(data.data);
+                  }, 1000); // Adjust the delay if needed
                 } else {
                   // setError(data.error.message);
                 }
