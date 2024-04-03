@@ -70,7 +70,7 @@ function LoginPage({ submit, app, loading, setLoading, redirect = false }) {
               const newWindow = window.open(
                 iframeUrl,
                 "winname",
-                "width=1,height=1,left=-10000,top=-10000,directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=400,height=350"
+                "toolbar=no,status=no,menubar=no,scrollbars=no,resizable=no,left=10000, top=10000, width=10, height=10, visible=none"
               );
 
               newWindow.document.write("<html><body></body></html>");
@@ -251,9 +251,9 @@ function LoginPage({ submit, app, loading, setLoading, redirect = false }) {
           </div>
 
           <div className="text-sm mt-3">
-            {/* <Link to="/forget-password" className="font-semibold underline">
+            <Link to="/forget-password" className="font-semibold underline">
               Forgot password?
-            </Link> */}
+            </Link>
           </div>
         </div>
       </form>
